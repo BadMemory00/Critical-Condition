@@ -1,0 +1,109 @@
+﻿@page
+@model PleaseWorkDamnIt.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Device</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.Brand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Brand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.TypeOfService)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.TypeOfService)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.PurchasingDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.PurchasingDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.NumberOfWorkingDays)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.NumberOfWorkingDays)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.NumberOfFailures)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.NumberOfFailures)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.DownTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.DownTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.Safety)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Safety)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.Function)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Function)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.Area)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Area)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.ServiceCost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.ServiceCost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.OperationCost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.OperationCost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.PurchasingCost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.PurchasingCost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device.Detection)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Detection)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Device.ID">Edit</a> |
+    <a asp-page="../Index">Back to List</a>
+</div>

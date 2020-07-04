@@ -1,0 +1,105 @@
+﻿@page
+@model PleaseWorkDamnIt.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Device</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Device.Name" class="control-label"></label>
+                <input asp-for="Device.Name" class="form-control" />
+                <span asp-validation-for="Device.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.Brand" class="control-label"></label>
+                <input asp-for="Device.Brand" class="form-control" />
+                <span asp-validation-for="Device.Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.Model" class="control-label"></label>
+                <input asp-for="Device.Model" class="form-control" />
+                <span asp-validation-for="Device.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.TypeOfService" class="control-label"></label>
+                <input asp-for="Device.TypeOfService" class="form-control" />
+                <span asp-validation-for="Device.TypeOfService" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.PurchasingDate" class="control-label"></label>
+                <input asp-for="Device.PurchasingDate" class="form-control" />
+                <span asp-validation-for="Device.PurchasingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.NumberOfWorkingDays" class="control-label"></label>
+                <input asp-for="Device.NumberOfWorkingDays" class="form-control" />
+                <span asp-validation-for="Device.NumberOfWorkingDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.NumberOfFailures" class="control-label"></label>
+                <input asp-for="Device.NumberOfFailures" class="form-control" />
+                <span asp-validation-for="Device.NumberOfFailures" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.DownTime" class="control-label"></label>
+                <input asp-for="Device.DownTime" class="form-control" />
+                <span asp-validation-for="Device.DownTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Device.Safety" class="control-label"></label>
+                <input asp-for="Device.Safety" class="form-control" />
+                <span asp-validation-for="Device.Safety" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.Function" class="control-label"></label>
+                <input asp-for="Device.Function" class="form-control" />
+                <span asp-validation-for="Device.Function" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.Area" class="control-label"></label>
+                <input asp-for="Device.Area" class="form-control" />
+                <span asp-validation-for="Device.Area" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.ServiceCost" class="control-label"></label>
+                <input asp-for="Device.ServiceCost" class="form-control" />
+                <span asp-validation-for="Device.ServiceCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.OperationCost" class="control-label"></label>
+                <input asp-for="Device.OperationCost" class="form-control" />
+                <span asp-validation-for="Device.OperationCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.PurchasingCost" class="control-label"></label>
+                <input asp-for="Device.PurchasingCost" class="form-control" />
+                <span asp-validation-for="Device.PurchasingCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Device.Detection" class="control-label"></label>
+                <input asp-for="Device.Detection" class="form-control" />
+                <span asp-validation-for="Device.Detection" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

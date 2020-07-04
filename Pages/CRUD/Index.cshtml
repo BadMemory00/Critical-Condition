@@ -1,0 +1,120 @@
+﻿@page
+@model PleaseWorkDamnIt.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].TypeOfService)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].PurchasingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].NumberOfWorkingDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].NumberOfFailures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].DownTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].Safety)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].Function)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].ServiceCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].OperationCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].PurchasingCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Device[0].Detection)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Device) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfService)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchasingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfWorkingDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfFailures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DownTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Safety)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Function)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OperationCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchasingCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detection)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

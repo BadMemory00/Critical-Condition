@@ -1,0 +1,224 @@
+﻿@page
+@model PleaseWorkDamnIt.Pages.RPNCalculationsModel
+@{
+}
+<h4><a asp-page="Index">< -- Go Back</a></h4>
+<hr />
+<h2>RPN For This Device is Calculated as Follows : </h2>
+<div class="row">
+    <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="Probability">Probability</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="Severity">Severity</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="Detectability">Detectability</a>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                <ul>
+                    <li>
+                        <h4>Utilization Rate : @Model.Device.UtilizationRateString()</h4>
+                        <ul>
+                            <li><h6>Excessive ==> 5</h6></li>
+                            <li><h6>Above Average ==> 4</h6></li>
+                            <li><h6>Average ==> 3</h6></li>
+                            <li><h6>Below Average ==> 2</h6></li>
+                            <li><h6>Limited ==> 1</h6></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <h4>Unavailability : @Model.Device.UnavailabilityString()</h4>
+                        <ul>
+                            <li><h6>Very High ==> 5</h6></li>
+                            <li><h6>High ==> 4</h6></li>
+                            <li><h6>Moderate ==> 3</h6></li>
+                            <li><h6>Low ==> 2</h6></li>
+                            <li><h6>Very Low ==> 1</h6></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>Age Factor : Device Age = @{int x = DateTime.Now.Year - Model.Device.PurchasingDate.Year;} @x Years</h4>
+                        <ul>
+                            <li><h6>Age >= 10   ==> 5</h6></li>
+                            <li><h6>8 <= Age < 10 ==> 4</h6></li>
+                            <li><h6>6 <= Age < 8 ==> 3</h6></li>
+                            <li><h6>5 <= Age < 6 ==> 2</h6></li>
+                            <li><h6>Age < 5 ==> 1</h6></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                <ul>
+                    <li>
+                        <h4>Safety : @Model.Device.Safety</h4>
+                        <ul>
+                            <li><h6>Catastrophic ==> 5</h6></li>
+                            <li><h6>Critical ==> 4</h6></li>
+                            <li><h6>Series ==> 3</h6></li>
+                            <li><h6>Minor ==> 2</h6></li>
+                            <li><h6>Neglegable ==> 1</h6></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <h4>
+                            Importance : ((Function+Area)/2) =  @{double Importance = Math.Ceiling(((double)Model.Device.Function + (double)Model.Device.Area) / 2);} @Importance
+                        </h4>
+                        <ul>
+                            <li>
+                                <h5>Function : @Model.Device.Function</h5>
+                                <ul>
+                                    <li><h6>Life Support ==> 5</h6></li>
+                                    <li><h6>Diagnostic ==> 4</h6></li>
+                                    <li><h6>Therapy+Analysis ==> 3</h6></li>
+                                    <li><h6>Monitoring ==> 2</h6></li>
+                                    <li><h6>Micelles ==> 1</h6></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5>Area : @Model.Device.Area</h5>
+                                <ul>
+                                    <li><h6>OR ==> 5</h6></li>
+                                    <li><h6>Emergency, ICU ==> 4</h6></li>
+                                    <li><h6>Rad+Labs ==> 3</h6></li>
+                                    <li><h6>Internal Units ==> 2</h6></li>
+                                    <li><h6>Others ==> 1</h6></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>Business : Service Cost = @Model.Device.ServiceCost / Purchasing Cost = @Model.Device.PurchasingCost</h4>
+                        <h5>Financial Score = @Model.Device.FinancialScore()</h5>
+                        <ul>
+                            <li><h6>Service Cost / Purchasing Cost >= 0.5 ==> 5</h6></li>
+                            <li><h6>0.3 <= Service Cost / Purchasing Cost < 0.5 ==> 4</h6></li>
+                            <li><h6>Service Cost / Purchasing Cost < 0.3 ==> 3</h6></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                <div>
+                    <h3>Detectability : @Model.Device.Detection</h3>
+                    <ul>
+                        <li><h6>No Chance ==> 5</h6></li>
+                        <li><h6>Low Chance ==> 4</h6></li>
+                        <li><h6>Moderate Chance ==> 3</h6></li>
+                        <li><h6>High Chance ==> 2</h6></li>
+                        <li><h6>Easy To Detect ==> 1</h6></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<br />
+<div>
+    <h3>Probability : </h3>
+    <ul>
+        <li>
+            <h4>Utilization Rate :</h4>
+            <ul>
+                <li><h6>Excessive ==> 5</h6></li>
+                <li><h6>Above Average ==> 4</h6></li>
+                <li><h6>Average ==> 3</h6></li>
+                <li><h6>Below Average ==> 2</h6></li>
+                <li><h6>Limited ==> 1</h6></li>
+            </ul>
+        </li>
+
+        <li>
+            <h4>Unavailability :</h4>
+            <ul>
+                <li><h6>Very High ==> 5</h6></li>
+                <li><h6>High ==> 4</h6></li>
+                <li><h6>Moderate ==> 3</h6></li>
+                <li><h6>Low ==> 2</h6></li>
+                <li><h6>Very Low ==> 1</h6></li>
+            </ul>
+        </li>
+        <li>
+            <h4>Age Factor :</h4>
+            <ul>
+                <li><h6>Age >= 10   ==> 5</h6></li>
+                <li><h6>8 <= Age < 10 ==> 4</h6></li>
+                <li><h6>6 <= Age < 8 ==> 3</h6></li>
+                <li><h6>5 <= Age < 6 ==> 2</h6></li>
+                <li><h6>Age < 5 ==> 1</h6></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<hr />
+<div>
+    <h3>Severity : </h3>
+    <ul>
+        <li>
+            <h4>Safety :</h4>
+            <ul>
+                <li><h6>Catastrophic ==> 5</h6></li>
+                <li><h6>Critical ==> 4</h6></li>
+                <li><h6>Series ==> 3</h6></li>
+                <li><h6>Minor ==> 2</h6></li>
+                <li><h6>Neglegable ==> 1</h6></li>
+            </ul>
+        </li>
+
+        <li>
+            <h4>Importance :</h4>
+            <ul>
+                <li>
+                    <h5>Function</h5>
+                    <ul>
+                        <li><h6>Life Support ==> 5</h6></li>
+                        <li><h6>Diagnostic ==> 4</h6></li>
+                        <li><h6>Therapy+Analysis ==> 3</h6></li>
+                        <li><h6>Monitoring ==> 2</h6></li>
+                        <li><h6>Micelles ==> 1</h6></li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>Area</h5>
+                    <ul>
+                        <li><h6>OR ==> 5</h6></li>
+                        <li><h6>Emergency, ICU ==> 4</h6></li>
+                        <li><h6>Rad+Labs ==> 3</h6></li>
+                        <li><h6>Internal Units ==> 2</h6></li>
+                        <li><h6>Others ==> 1</h6></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>Business :</h4>
+            <ul>
+                <li><h6>Service Cost / Purchasing Cost >= 0.5 ==> 5</h6></li>
+                <li><h6>0.3 <= Service Cost / Purchasing Cost < 0.5 ==> 4</h6></li>
+                <li><h6>Service Cost / Purchasing Cost < 0.3 ==> 3</h6></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<hr />
+<div>
+    <h3>Detectability : </h3>
+    <ul>
+        <li><h6>No Chance ==> 5</h6></li>
+        <li><h6>Low Chance ==> 4</h6></li>
+        <li><h6>Moderate Chance ==> 3</h6></li>
+        <li><h6>High Chance ==> 2</h6></li>
+        <li><h6>Easy To Detect ==> 1</h6></li>
+    </ul>
+</div>*@
+<hr />
+<div class="text-center">
+    <h2>This Sketch Demonstrates How RPNs Are Calculated</h2>
+</div>
+<div>   
+    <br />
+    <img class="img-fluid" src="~/Images/RPN Calculations3png.png" />
+</div>
