@@ -35,14 +35,10 @@ namespace PleaseWorkDamnIt
             {
                 return Page();
             }
-            if (Device.PurchasingDate.Date > DateTime.Now)
-            {
-                
-            }
             _context.Device.Add(Device);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../Index");
         }
     }
 }

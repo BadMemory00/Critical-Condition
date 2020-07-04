@@ -66,7 +66,7 @@ namespace PleaseWorkDamnIt
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../Index");
         }
 
         private bool DeviceExists(int id)
