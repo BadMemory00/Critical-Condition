@@ -1,0 +1,215 @@
+﻿@page
+@model PleaseWorkDamnIt.AddDeviceModel
+@{
+    ViewData["Title"] = "Add Device";
+}
+@{
+    Layout = "_LayoutWithOutFooter";
+}
+
+<h1>Add Device</h1>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="~/css/CreateNew.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+
+<header class="header">
+    <h1>
+    </h1>
+</header>
+
+<div class="multisteps-form" style="height:auto; width:auto">
+    <div class="row">
+        <div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+            <div class="multisteps-form__progress">
+                <button class="multisteps-form__progress-btn js-active" type="button" title="Basic Information">Basic Info</button>
+                <button class="multisteps-form__progress-btn" type="button" title="Probability Information">Probability Info</button>
+                <button class="multisteps-form__progress-btn" type="button" title="Severity Information">Severity Info</button>
+                <button class="multisteps-form__progress-btn" type="button" title="Detection Information">Detection Info</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-8 m-auto">
+            <form method="post" class="multisteps-form__form">
+                <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+                    <h3 class="multisteps-form__title font-weight-bolder">Device Basic Information :</h3>
+                    <div class="multisteps-form__content">
+                        <div class="form-row mt-4">
+                            <div class="col-12 col-sm-6">
+                                <input asp-for="Device.Name" class="multisteps-form__input form-control" placeholder="Name" />
+                                <span asp-validation-for="Device.Name" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                                <input asp-for="Device.Brand" class="multisteps-form__input form-control" placeholder="Brand" />
+                                <span asp-validation-for="Device.Brand" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-row mt-4">
+                            <div class="col-12 col-sm-6">
+                                <input asp-for="Device.Model" class="multisteps-form__input form-control" placeholder="Model" />
+                                <span asp-validation-for="Device.Model" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6 mt-4 mt-sm-0">
+                                <input asp-for="Device.TypeOfService" class="multisteps-form__input form-control" placeholder="Type of service" />
+                                <span asp-validation-for="Device.TypeOfService" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-row mt-4">
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Device.PurchasingDate">Purchasing Date :</label>
+                                <input asp-for="Device.PurchasingDate" class="form-control" placeholder="Purchasing Date" />
+                                <span asp-validation-for="Device.PurchasingDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="button-row d-flex mt-4">
+                            <input class="btn btn-warning  float-left" type="reset" placeholder="Reset" />
+                            <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                    <h3 class="multisteps-form__title font-weight-bolder">Probability Information</h3>
+                    <div class="multisteps-form__content">
+                        <h5 class="font-weight-bold">Utilization Rate :</h5>
+                        <div class="form-row mt-4">
+                            <div class="col">
+                                <input asp-for="Device.NumberOfWorkingDays" class="multisteps-form__input form-control" placeholder="Number Of Working Days (Yearly)" />
+                                <span asp-validation-for="Device.NumberOfWorkingDays" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <hr />
+                        <h5 class="font-weight-bold">Unavailability :</h5>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                <div>
+                                    <input asp-for="Device.NumberOfFailures" class="multisteps-form__input form-control" placeholder="Number Of Failures" />
+                                    <span asp-validation-for="Device.NumberOfFailures" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div>
+                                    <input asp-for="Device.DownTime" class="multisteps-form__input form-control" placeholder="Down Time (Days)" />
+                                    <span asp-validation-for="Device.DownTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-row d-flex mt-4">
+                            <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                            <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                    <h3 class="multisteps-form__title font-weight-bolder">Severity Information</h3>
+                    <div class="multisteps-form__content">
+                        <div class="form-group">
+                            <h5 class="font-weight-bold">Safety : </h5>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Choose</label>
+                                </div>
+                                <select asp-for="Device.Safety" class="custom-select">
+                                    <option value="1">Negligible</option>
+                                    <option value="2">Minor</option>
+                                    <option value="3">Serious</option>
+                                    <option value="4">Critical</option>
+                                    <option value="5">Catastrophic</option>
+                                </select>
+                                <span asp-validation-for="Device.Safety" class="text-danger"></span>
+                            </div>
+                            <hr />
+                        </div>
+                        <div>
+                            <div>
+                                <h5 class="font-weight-bold">Importance :</h5>
+                                <h6>Function :</h6>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Choose</label>
+                                    </div>
+                                    <select asp-for="Device.Function" class="custom-select">
+                                        <option value="1">Micekkes</option>
+                                        <option value="2">Monitoring</option>
+                                        <option value="3">TherapyAnalysis</option>
+                                        <option value="4">Diagnostic</option>
+                                        <option value="5">LifeSupport</option>
+                                    </select>
+                                    <span asp-validation-for="Device.Function" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <h6>Area :</h6>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Choose</label>
+                                    </div>
+                                    <select asp-for="Device.Area" class="custom-select">
+                                        <option value="1">Other</option>
+                                        <option value="2">InternalUnits</option>
+                                        <option value="3">RadiologyLabs</option>
+                                        <option value="4">EmergencyICU</option>
+                                        <option value="5">OR</option>
+                                    </select>
+                                    <span asp-validation-for="Device.Area" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <h5 class="font-weight-bold">Business :</h5>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                <input asp-for="Device.ServiceCost" class="multisteps-form__input form-control" placeholder="Service cost (Yearly)" />
+                                <span asp-validation-for="Device.ServiceCost" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-2">
+                                <input asp-for="Device.OperationCost" class="multisteps-form__input form-control" placeholder="Operation cost (Yearly)" />
+                                <span asp-validation-for="Device.OperationCost" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <input asp-for="Device.PurchasingCost" class="multisteps-form__input form-control" placeholder="Purchasing Cost" />
+                                <span asp-validation-for="Device.PurchasingCost" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="button-row d-flex mt-4">
+                            <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                            <button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                    <h3 class="multisteps-form__title font-weight-bolder">Detection : (Choose)</h3>
+                    <div class="multisteps-form__content">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                            </div>
+                            <select asp-for="Device.Detection" class="custom-select">
+                                <option value="1">Easy To Detect</option>
+                                <option value="2">High Chance</option>
+                                <option value="3">Moderate Chance</option>
+                                <option value="4">Low Chance</option>
+                                <option value="5">No Chance</option>
+                            </select>
+                            <span asp-validation-for="Device.Detection" class="text-danger"></span>
+                        </div>
+                        <div class="button-row d-flex mt-4">
+                            <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
+                            <input class="btn btn-success ml-auto" type="submit" value="Create" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/CreateNew.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

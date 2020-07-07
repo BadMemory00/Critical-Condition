@@ -4,99 +4,116 @@
     ViewData["Title"] = "Home page";
 }
 <link href="~/css/Cards.css" rel="stylesheet" />
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h3 class="">This Project is Done by Nariman and The Gang</h3>
 </div>
 
-@foreach (var item in Model.Device)
+<form class="form-inline active-cyan-4 row justify-content-center">
+    <input asp-for="SearchString" class="form-control form-control-sm w-75 col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" style="height:40px" type="text" placeholder="Search by Name"
+           aria-label="Search">
+</form>
+@if (Model.Device.Count() == 0)
 {
-    double Importance = Math.Ceiling(((double)item.Function + (double)item.Area) / 2);
-    double RPNPercentage = (item.RPN() * 100) / 975;
-
-
-    <div class="card m-3" style="width: 20rem; display:inline-block">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-10">
-                    <h5 class="card-title">Device Name: @item.Name</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Type of Service : @item.TypeOfService</h6>
-                </div>
-                <div class="col-2 mt-2">
-                    <a asp-page="CRUD/Delete" asp-route-id="@item.ID"><img title="Delete Device" alt="Delete" src="~/Images/delete.png" style="height:30px;width:30px;" /></a>
-                </div>
-            </div>
-            <hr />
-            <h7>Utilization Rate : @item.UtilizationRateString()</h7>
-            <br />
-            <h7>Unavailability : @item.UnavailabilityString()</h7>
-            <br />
-            <h7>Safety : @item.Safety</h7>
-            <br />
-            <h7>Importance : @Importance</h7>
-            <br />
-            <h7>Financial Score : @item.FinancialScore()</h7>
-            <br />
-            <h7>Detection : @item.Detection</h7>
-            <br />
-            <h7>Age Fator : @item.AgeFactor()</h7>
-            <hr />
-            <h6>RPN : @item.RPN() / 975</h6>
-            @if (RPNPercentage <= 50)
-            {
-                <div class="progress">
-                    <div class="progress-bar bg-success" style="width:@RPNPercentage%; min-width:20px">@RPNPercentage%</div>
-                </div>
-            }
-            @if (RPNPercentage <= 75 && RPNPercentage > 50)
-            {
-                <div class="progress">
-                    <div class="progress-bar bg-warning" style="width:@RPNPercentage%; min-width:20px">@RPNPercentage%</div>
-                </div>
-            }
-            @if (RPNPercentage > 75)
-            {
-                <div class="progress">
-                    <div class="progress-bar bg-danger" style="width:@RPNPercentage%; min-width:20px">@RPNPercentage%</div>
-                </div>
-            }
-            <div class="text-right mt-1"><a class="" asp-page="RPNCalculations" asp-route-id="@item.ID" title="How This Was Calculated">Calculations Details</a></div>
-            <hr />
-            <a asp-page="CRUD/Details" asp-route-id="@item.ID" class="card-link float-left mb-3 badge badge-info" style="font-size:15px;" title="Device Details">Full Details</a>
-            <a asp-page="CRUD/Edit" asp-route-id="@item.ID" class="card-link float-right badge badge-secondary" style="font-size:15px;" title="Edit Device">Edit Device</a>
-        </div>
+    <div class="text-center mt-5">
+        <h4 class="text-danger">No Devices With that name</h4>
+        <h5 class="mt-5">Maybe Search for Another one ?</h5>
     </div>
 }
+else
+{
+    @foreach (var item in Model.Device)
+    {
+        double? Importance = Math.Ceiling(((double)item.Function + (double)item.Area) / 2);
+        double RPNPercentage = (item.RPN() * 100) / 975;
+
+
+        <div class="card m-3" style="width: 20rem; display:inline-block">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                        <h5 class="card-title">Device Name: @item.Name</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Type of Service : @item.TypeOfService</h6>
+                    </div>
+                    <div class="col-2 mt-2">
+                        <a asp-page="CRUD/Delete" asp-route-id="@item.ID"><img title="Delete Device" alt="Delete" src="~/Images/delete.png" style="height:25px;width:25px;" /></a>
+                    </div>
+                </div>
+                <hr />
+                <h7>Utilization Rate : @item.UtilizationRateString()</h7>
+                <br />
+                <h7>Unavailability : @item.UnavailabilityString()</h7>
+                <br />
+                <h7>Safety : @item.Safety</h7>
+                <br />
+                <h7>Importance : @Importance</h7>
+                <br />
+                <h7>Financial Score : @item.FinancialScore()</h7>
+                <br />
+                <h7>Detection : @item.Detection</h7>
+                <br />
+                <h7>Age Fator : @item.AgeFactor()</h7>
+                <hr />
+                <h6>RPN : @item.RPN() / 975</h6>
+                @if (RPNPercentage <= 50)
+                {
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width:@RPNPercentage%; min-width:20px">@RPNPercentage%</div>
+                    </div>
+                }
+                @if (RPNPercentage <= 75 && RPNPercentage > 50)
+                {
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" style="width:@RPNPercentage%; min-width:20px">@RPNPercentage%</div>
+                    </div>
+                }
+                @if (RPNPercentage > 75)
+                {
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" style="width:@RPNPercentage%; min-width:20px">@RPNPercentage%</div>
+                    </div>
+                }
+                <div class="text-right mt-1"><a class="" asp-page="RPNCalculations" asp-route-id="@item.ID" title="How This Was Calculated">Calculations Details</a></div>
+                <hr />
+                <a asp-page="CRUD/Details" asp-route-id="@item.ID" class="card-link float-left mb-3 badge badge-info" style="font-size:15px;" title="Device Details">Full Details</a>
+                <a asp-page="CRUD/Edit" asp-route-id="@item.ID" class="card-link float-right badge badge-secondary" style="font-size:15px;" title="Edit Device">Edit Device</a>
+            </div>
+        </div>
+    }
+}
+
+
 @*@section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('.card m-3').hover(
-                function () {
-                    $(this).animate({
-                        margintop: "-=1%",
-                    }, 200);
-                },
-                function () {
-                    $(this).animate({
-                        margintop: "0",
-                    }, 200);
-                }
-            );
-        });
-    </script>
-    <script>
-        document.ready(function () {
-            $('.card').hover(
-                function () {
-                    this.animate({
-                        marginTop: "-=1%",
-                    }, 200);
-                },
-                function () {
-                    this.animate({
-                        marginTop: "0%"
-                    }, 200);
-                }
-            );
-        })
-    </script>
-}*@
+        <script>
+            $(document).ready(function () {
+                $('.card m-3').hover(
+                    function () {
+                        $(this).animate({
+                            margintop: "-=1%",
+                        }, 200);
+                    },
+                    function () {
+                        $(this).animate({
+                            margintop: "0",
+                        }, 200);
+                    }
+                );
+            });
+        </script>
+        <script>
+            document.ready(function () {
+                $('.card').hover(
+                    function () {
+                        this.animate({
+                            marginTop: "-=1%",
+                        }, 200);
+                    },
+                    function () {
+                        this.animate({
+                            marginTop: "0%"
+                        }, 200);
+                    }
+                );
+            })
+        </script>
+    }*@

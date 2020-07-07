@@ -21,14 +21,22 @@ namespace PleaseWorkDamnIt.Pages
             _logger = logger;
             this.context = context;
         }
-        
+        [BindProperty(SupportsGet =true)]
+        public string SearchString { get; set; }
+
         [BindProperty]
         public IList<Device> Device { get; set; }
 
 
         public async Task OnGetAsync()
         {
-            Device = await context.Device.ToListAsync();
+            var devices = from d in context.Device
+                          select d;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                devices = devices.Where(s => s.Name.Contains(SearchString));
+            }
+            Device = await devices.ToListAsync();
         }
 
     }
