@@ -24,6 +24,7 @@ namespace PleaseWorkDamnIt.Pages
         [BindProperty(SupportsGet =true)]
         public string SearchString { get; set; }
 
+
         [BindProperty]
         public IList<Device> Device { get; set; }
 
@@ -36,6 +37,7 @@ namespace PleaseWorkDamnIt.Pages
             {
                 devices = devices.Where(s => s.Name.Contains(SearchString));
             }
+            //devices = devices.OrderBy(x => x.PurchasingCost);
             Device = await devices.ToListAsync();
         }
 

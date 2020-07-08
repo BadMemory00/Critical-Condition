@@ -23,9 +23,6 @@ namespace PleaseWorkDamnIt
             return Page();
         }
         [BindProperty]
-        public string Safe { get; set; }
-        public string[] Safes = { "Negligible", "Minor", "Serious", "Critical", "Catastrophic" };
-        [BindProperty]
         public Device Device { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {

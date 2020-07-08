@@ -81,39 +81,3 @@ else
         </div>
     }
 }
-
-
-@*@section Scripts {
-        <script>
-            $(document).ready(function () {
-                $('.card m-3').hover(
-                    function () {
-                        $(this).animate({
-                            margintop: "-=1%",
-                        }, 200);
-                    },
-                    function () {
-                        $(this).animate({
-                            margintop: "0",
-                        }, 200);
-                    }
-                );
-            });
-        </script>
-        <script>
-            document.ready(function () {
-                $('.card').hover(
-                    function () {
-                        this.animate({
-                            marginTop: "-=1%",
-                        }, 200);
-                    },
-                    function () {
-                        this.animate({
-                            marginTop: "0%"
-                        }, 200);
-                    }
-                );
-            })
-        </script>
-    }*@
