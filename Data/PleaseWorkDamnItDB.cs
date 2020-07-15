@@ -15,5 +15,7 @@ namespace PleaseWorkDamnIt.Data
         }
 
         public DbSet<Device> Device { get; set; }
+
+
     }
 }

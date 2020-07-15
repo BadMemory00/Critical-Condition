@@ -147,10 +147,11 @@ namespace PleaseWorkDamnIt.Models
             if (DateTime.Now.Year - PurchasingDate.Year >= 5 && DateTime.Now.Year - PurchasingDate.Year < 6) return 2;
             else return 1;
         }
-        public int RPN() 
-        {
-            double Importance = Math.Ceiling(((double)Function + (double)Area) / 2);
-            return (UtilizationRate() + Unavailability()+ AgeFactor()) * ((int)Safety + (int)Importance + FinancialScore()) * (int)Detection;
-        }
+        //public int RPN() 
+        //{
+        //    double Importance = Math.Ceiling(((double)Function + (double)Area) / 2);
+        //    return (UtilizationRate() + Unavailability()+ AgeFactor()) * ((int)Safety + (int)Importance + FinancialScore()) * (int)Detection;
+        //}
+        public int DeviceScore { get; set; }
     }
 }

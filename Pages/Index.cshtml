@@ -6,18 +6,46 @@
 <link href="~/css/Cards.css" rel="stylesheet" />
 
 <div class="text-center">
-    <h3 class="">This Project is Done by Nariman and The Gang</h3>
+    <h3 class=""></h3>
 </div>
 
 <form class="form-inline active-cyan-4 row justify-content-center">
     <input asp-for="SearchString" class="form-control form-control-sm w-75 col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" style="height:40px" type="text" placeholder="Search by Name"
            aria-label="Search">
 </form>
-@if (Model.Device.Count() == 0)
+<br />
+@if (String.IsNullOrEmpty(Model.SearchString))
+{
+    <form class="form-inline active-cyan-4 row justify-content-center">
+        <button type="submit" class="btn btn-primary" @{Model.SortOrNot = "Sort";}>Sort by Device Score </button>
+        <input asp-for="SortOrNot" type="hidden" placeholder="Sort" />
+    </form>
+}
+@foreach (var item in Model.Device)
+{
+    double RPNPercentage = (item.DeviceScore * 100) / 975;
+    @if (RPNPercentage > 75)
+    {
+        Model.dangerousDevicesNumber++;
+    }
+}
+<br />
+@if (Model.dangerousDevicesNumber > 0)
+{
+<p class="text-danger">You have <b>@Model.dangerousDevicesNumber</b> Devices with very high risk  <a asp-page="*" class="">Click here</a> to see recommend actions</p>
+}
+@if (Model.Device.Count() == 0 && !String.IsNullOrEmpty(Model.SearchString))
 {
     <div class="text-center mt-5">
         <h4 class="text-danger">No Devices With that name</h4>
         <h5 class="mt-5">Maybe Search for Another one ?</h5>
+    </div>
+}
+@if (Model.Device.Count() == 0 && String.IsNullOrEmpty(Model.SearchString))
+{
+    <div class="text-center mt-5">
+        <h4 class="text-danger">There are no devices</h4>
+        <h5 class="mt-5">Maybe <a asp-page="AddDevice">add one ?</a></h5>
     </div>
 }
 else
@@ -25,7 +53,7 @@ else
     @foreach (var item in Model.Device)
     {
         double? Importance = Math.Ceiling(((double)item.Function + (double)item.Area) / 2);
-        double RPNPercentage = (item.RPN() * 100) / 975;
+        double RPNPercentage = (item.DeviceScore * 100) / 975;
 
 
         <div class="card m-3" style="width: 20rem; display:inline-block">
@@ -54,7 +82,7 @@ else
                 <br />
                 <h7>Age Fator : @item.AgeFactor()</h7>
                 <hr />
-                <h6>RPN : @item.RPN() / 975</h6>
+                <h6>RPN : @item.DeviceScore / 975</h6>
                 @if (RPNPercentage <= 50)
                 {
                     <div class="progress">
@@ -81,3 +109,4 @@ else
         </div>
     }
 }
+

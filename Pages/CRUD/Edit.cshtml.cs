@@ -52,6 +52,8 @@ namespace PleaseWorkDamnIt
 
             try
             {
+                double Importance = Math.Ceiling(((double)Device.Function + (double)Device.Area) / 2);
+                Device.DeviceScore = (Device.UtilizationRate() + Device.Unavailability() + Device.AgeFactor()) * ((int)Device.Safety + (int)Importance + Device.FinancialScore()) * (int)Device.Detection;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

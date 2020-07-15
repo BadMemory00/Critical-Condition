@@ -56,17 +56,36 @@
             </div>
             <div class="form-group">
                 <label asp-for="Device.Safety" class="control-label"></label>
-                <input asp-for="Device.Safety" class="form-control" />
+                   @*<input asp-for="Device.Safety" class="form-control" />*@
+                <select asp-for="Device.Safety" class="custom-select">
+                    <option value="1">Negligible</option>
+                    <option value="2">Minor</option>
+                    <option value="3">Serious</option>
+                    <option value="4">Critical</option>
+                    <option value="5">Catastrophic</option>
+                </select>
                 <span asp-validation-for="Device.Safety" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Device.Function" class="control-label"></label>
-                <input asp-for="Device.Function" class="form-control" />
+                <select asp-for="Device.Function" class="custom-select">
+                    <option value="1">Micelles</option>
+                    <option value="2">Monitoring</option>
+                    <option value="3">TherapyAnalysis</option>
+                    <option value="4">Diagnostic</option>
+                    <option value="5">LifeSupport</option>
+                </select>
                 <span asp-validation-for="Device.Function" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Device.Area" class="control-label"></label>
-                <input asp-for="Device.Area" class="form-control" />
+                <select asp-for="Device.Area" class="custom-select">
+                    <option value="1">Other</option>
+                    <option value="2">InternalUnits</option>
+                    <option value="3">RadiologyLabs</option>
+                    <option value="4">EmergencyICU</option>
+                    <option value="5">OR</option>
+                </select>
                 <span asp-validation-for="Device.Area" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -86,7 +105,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Device.Detection" class="control-label"></label>
-                <input asp-for="Device.Detection" class="form-control" />
+                <select asp-for="Device.Detection" class="custom-select">
+                    <option value="1">Easy To Detect</option>
+                    <option value="2">High Chance</option>
+                    <option value="3">Moderate Chance</option>
+                    <option value="4">Low Chance</option>
+                    <option value="5">No Chance</option>
+                </select>
                 <span asp-validation-for="Device.Detection" class="text-danger"></span>
             </div>
             <div class="form-group">

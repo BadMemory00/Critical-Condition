@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -21,25 +22,33 @@ namespace PleaseWorkDamnIt.Pages
             _logger = logger;
             this.context = context;
         }
+
+        public int dangerousDevicesNumber = 0;
+
         [BindProperty(SupportsGet =true)]
         public string SearchString { get; set; }
 
+        [BindProperty(SupportsGet =true)]
+        public string SortOrNot { get; set; }
 
         [BindProperty]
         public IList<Device> Device { get; set; }
-
-
+        
         public async Task OnGetAsync()
         {
             var devices = from d in context.Device
                           select d;
+
             if (!String.IsNullOrEmpty(SearchString))
             {
                 devices = devices.Where(s => s.Name.Contains(SearchString));
+                devices = devices.OrderByDescending(x => x.DeviceScore);
             }
-            //devices = devices.OrderBy(x => x.PurchasingCost);
+            if (SortOrNot == "Sort")
+            {
+                devices = devices.OrderByDescending(x => x.DeviceScore);
+            }
             Device = await devices.ToListAsync();
         }
-
     }
 }
