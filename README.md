@@ -2,4 +2,4 @@ this website was made as a graduation project in mansoura universty engineering 
 
 here is a small demo of how the website works:
 
-![](photos/demo 1 (index).png)
+![](photos/demo%201%20(index).png)
