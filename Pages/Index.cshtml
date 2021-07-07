@@ -17,7 +17,7 @@
 @if (String.IsNullOrEmpty(Model.SearchString))
 {
     <form class="form-inline active-cyan-4 row justify-content-center">
-        <button type="submit" class="btn btn-primary" @{Model.SortOrNot = "Sort";}>Sort by Device Score </button>
+        <button type="submit" class="btn btn-primary" @{Model.SortOrNot = !Model.SortOrNot;}>Sort by Device Score </button>
         <input asp-for="SortOrNot" type="hidden" placeholder="Sort" />
     </form>
 }

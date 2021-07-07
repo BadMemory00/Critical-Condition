@@ -28,8 +28,8 @@ namespace PleaseWorkDamnIt.Pages
         [BindProperty(SupportsGet =true)]
         public string SearchString { get; set; }
 
-        [BindProperty(SupportsGet =true)]
-        public string SortOrNot { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public bool SortOrNot { get; set; } = false;
 
         [BindProperty]
         public IList<Device> Device { get; set; }
@@ -44,7 +44,7 @@ namespace PleaseWorkDamnIt.Pages
                 devices = devices.Where(s => s.Name.Contains(SearchString));
                 devices = devices.OrderByDescending(x => x.DeviceScore);
             }
-            if (SortOrNot == "Sort")
+            if (SortOrNot == true)
             {
                 devices = devices.OrderByDescending(x => x.DeviceScore);
             }

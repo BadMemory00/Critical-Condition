@@ -26,7 +26,7 @@ namespace PleaseWorkDamnIt
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-
+            services.AddServerSideBlazor();
             services.AddDbContext<PleaseWorkDamnItDB>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("CriticalCondition")));
         }
